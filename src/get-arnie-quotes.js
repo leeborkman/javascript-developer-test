@@ -6,7 +6,7 @@ IMPLEMENTATION NOTES:
 1)  Promise.all() is the usual way to make the initial async requests,
       but will fail if there is any failed request.
       Let's use new Promise.allSettled() instead.
-      Alternative on older JS versions would be: 
+      Alternative approach on older JS versions would be: 
         Promise.all(urls.map(url => httpGet(url)).map(prom => prom.catch(err => err))
 
 2)  I have implemented two additional result objects for the cases where:
