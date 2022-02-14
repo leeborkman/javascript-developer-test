@@ -14,9 +14,9 @@ IMPLEMENTATION NOTES:
   We would need to extend mock-http-interface.js to test these cases.
 
 3. The requirement specifies that getArnieQuotes() must return a promise that resolves to the overall results array.
-   We could do this explicitly, but it is simpler and more readable to just make the function async,
-   which ensures that the return will always be a promise.
-   And this returned promise requirement is covered by the existing unit tests.
+  So let's be explicit about that, using Promise.resolve(quotes).
+  Usual alternative would be to return quotes directly, and the async function would automatically wrap that in a promise
+   
 */
 
 const SUCCESS_KEY = 'Arnie Quote';
@@ -53,7 +53,7 @@ const getArnieQuotes = async (urls) => {
     }
   });
 
-  return quotes;
+  return Promise.resolve(quotes);
 };
 
 module.exports = {
