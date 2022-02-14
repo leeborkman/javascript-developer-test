@@ -12,6 +12,11 @@ IMPLEMENTATION NOTES:
     b) The response from the server is not valid JSON, or is not in the expected format.
   These two cases are not covered by the existing test cases.
   We would need to extend mock-http-interface.js to test these cases.
+
+3. The requirement specifies that getArnieQuotes() must return a promise that resolves to the overall results array.
+   We could do this explicitly, but it is simpler and more readable to just make the function async,
+   which ensures that the return will always be a promise.
+   And this returned promise requirement is covered by the existing unit tests.
 */
 
 const SUCCESS_KEY = 'Arnie Quote';
